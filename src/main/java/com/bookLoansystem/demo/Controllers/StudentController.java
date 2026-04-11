@@ -2,6 +2,7 @@ package com.bookLoansystem.demo.Controllers;
 
 import com.bookLoansystem.demo.DTOs.StudentDto;
 import com.bookLoansystem.demo.Service.StudentService.*;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,8 +50,8 @@ public class StudentController {
 
     //update a student
     @PutMapping("/{id}")
-    public ResponseEntity<StudentDto> updateStudent(@PathVariable Long Id , @RequestBody StudentDto newStudent){
-        return ResponseEntity.ok(updateStudentService.updateStudent(Id , newStudent));
+    public ResponseEntity<StudentDto> updateStudent(@PathVariable Long id , @Valid @RequestBody StudentDto newStudent){
+        return ResponseEntity.ok(updateStudentService.updateStudent(id , newStudent));
     }
     
     //delete a student
@@ -61,6 +62,7 @@ public class StudentController {
 
     //enroll student for a course
     @PostMapping("/{studentId}/enroll/{courseId}")
+    @Transactional
     public ResponseEntity<StudentDto> enrollStudent
     (@PathVariable Long studentId , @PathVariable Long courseId){
         return enrollStudentService.enrollStudent(studentId , courseId);
@@ -68,6 +70,7 @@ public class StudentController {
 
 //drop a course
     @DeleteMapping("/{studentId}/enroll/{courseId}")
+    @Transactional
     public ResponseEntity<StudentDto> dropCourse(@PathVariable Long studentId , @PathVariable Long courseId){
         return dropACourseService.dropCourse(studentId , courseId);
     }

@@ -7,6 +7,7 @@ import com.bookLoansystem.demo.Service.CourseService.CreateCourseService;
 import com.bookLoansystem.demo.Service.CourseService.GetAllCourseService;
 import com.bookLoansystem.demo.Service.CourseService.StudentCoursesService;
 import com.bookLoansystem.demo.Service.CourseService.UpdateCourseService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +27,10 @@ public class CourseController {
     @Autowired
     private CreateCourseService createCourseService;
     @Autowired
-    public CourseRepository courseRepository;
+    private CourseRepository courseRepository;
 
     @PostMapping
-    public ResponseEntity<CourseDto> createCourse(@RequestBody CourseDto courseDto) {
+    public ResponseEntity<CourseDto> createCourse(@Valid @RequestBody CourseDto courseDto) {
         return createCourseService.createCourse(courseDto);
     }
 
@@ -46,7 +47,7 @@ public class CourseController {
     }
 
     @PutMapping("/{Id}")
-    public ResponseEntity<CourseDto> updateCourse(@PathVariable Long Id , @RequestBody CourseDto newCourse){
+    public ResponseEntity<CourseDto> updateCourse(@PathVariable Long Id , @Valid @RequestBody CourseDto newCourse){
         return updateCourseService.updateCourse(Id , newCourse);
     }
 

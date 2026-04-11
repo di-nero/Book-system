@@ -22,7 +22,7 @@ public class CreateStudentService {
     public ResponseEntity<Object> createStudent(StudentDto studentDto){
 
         if (studentRepository.existsByEmail(studentDto.getEmail())) {
-            throw new ResourceNotFoundException("Email already exists: " + studentDto.getEmail());
+            throw new RuntimeException("Email already exists: " + studentDto.getEmail());
         }
 
         var student = mapper.toStudentEntity(studentDto);

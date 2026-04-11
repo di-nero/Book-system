@@ -2,6 +2,7 @@ package com.bookLoansystem.demo.Controllers;
 
 import com.bookLoansystem.demo.DTOs.TeacherDto;
 import com.bookLoansystem.demo.Service.TeacherService.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class TeacherController {
 
     //create teacher
     @PostMapping
-    public ResponseEntity<TeacherDto> createTeacher(@RequestBody TeacherDto teacherDto) {
+    public ResponseEntity<TeacherDto> createTeacher(@Valid @RequestBody TeacherDto teacherDto) {
         return createTeacherService.createTeacher(teacherDto);
     }
 
@@ -45,7 +46,7 @@ public class TeacherController {
     }
 
     @PutMapping("/{Id}")
-    public ResponseEntity<TeacherDto> updateTeacher(@PathVariable Long Id, @RequestBody TeacherDto newTeacher) {
+    public ResponseEntity<TeacherDto> updateTeacher(@PathVariable Long Id, @Valid @RequestBody TeacherDto newTeacher) {
         return updateTeacherService.updateTeacher(Id, newTeacher);
     }
 

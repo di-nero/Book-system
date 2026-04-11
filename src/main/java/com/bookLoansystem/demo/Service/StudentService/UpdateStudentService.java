@@ -17,12 +17,12 @@ public class UpdateStudentService {
     @Autowired
     private Mapper mapper;
 
-    public StudentDto updateStudent(Long Id ,  StudentDto newStudent){
+    public StudentDto updateStudent(Long id ,  StudentDto newStudent){
 
-        Student students = studentRepository.findById(Id)
-                .orElseThrow(() -> new ResourceNotFoundException("cant find Student by id: " + Id));
+        Student students = studentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("cant find Student by id: " + id));
 
-        if (studentRepository.existsByEmailAndIdNot(newStudent.getEmail(), Id)) {
+        if (studentRepository.existsByEmailAndIdNot(newStudent.getEmail(), id)) {
             throw new RuntimeException("Email already exists: " + newStudent.getEmail());
         }
 

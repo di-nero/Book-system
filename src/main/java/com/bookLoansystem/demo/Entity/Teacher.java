@@ -1,12 +1,15 @@
 package com.bookLoansystem.demo.Entity;
 import com.bookLoansystem.demo.DTOs.TeacherDto;
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 
 
+@NoArgsConstructor
 @Entity
 public class Teacher {
 
@@ -31,9 +34,6 @@ public class Teacher {
         this.subject = teacher.getSubject();
         this.courses = teacher.getCourses();
         this.active = teacher.isActive();
-    }
-
-    public Teacher() {
     }
 
     public Teacher(TeacherDto teacherDto) {
