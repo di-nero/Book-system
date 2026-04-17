@@ -3,6 +3,7 @@ package com.bookLoansystem.demo.Service.TeacherService;
 import com.bookLoansystem.demo.DTOs.TeacherDto;
 import com.bookLoansystem.demo.Mapper.Mapper;
 import com.bookLoansystem.demo.Repositories.TeacherRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ public class GetAllTeacherService {
     @Autowired
     private Mapper mapper;
 
+    @Transactional
     public ResponseEntity<List<TeacherDto>> getAllTeachers(){
 
         var result =  teacherRepository

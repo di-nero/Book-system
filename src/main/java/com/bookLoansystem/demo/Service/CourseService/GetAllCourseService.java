@@ -4,6 +4,7 @@ package com.bookLoansystem.demo.Service.CourseService;
 import com.bookLoansystem.demo.DTOs.CourseDto;
 import com.bookLoansystem.demo.Mapper.Mapper;
 import com.bookLoansystem.demo.Repositories.CourseRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ public class GetAllCourseService {
     @Autowired
     public Mapper mapper;
 
+    @Transactional
     public ResponseEntity<List<CourseDto>> getAllCourse(){
 
         var result =  courseRepository

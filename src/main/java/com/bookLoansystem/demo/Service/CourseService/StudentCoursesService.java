@@ -6,6 +6,7 @@ import com.bookLoansystem.demo.Entity.Course;
 import com.bookLoansystem.demo.Exception.ResourceNotFoundException;
 import com.bookLoansystem.demo.Mapper.Mapper;
 import com.bookLoansystem.demo.Repositories.CourseRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class StudentCoursesService {
     @Autowired
     public Mapper mapper;
 
+    @Transactional
     public ResponseEntity<List<StudentCourseDto>> studentCourses(Long id){
         Course course = courseRepository
                 .findById(id).orElseThrow(() -> new ResourceNotFoundException("cant find course with id: " + id));

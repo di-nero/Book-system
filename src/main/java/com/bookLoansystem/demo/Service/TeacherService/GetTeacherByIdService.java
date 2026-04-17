@@ -5,6 +5,7 @@ import com.bookLoansystem.demo.Entity.Teacher;
 import com.bookLoansystem.demo.Exception.ResourceNotFoundException;
 import com.bookLoansystem.demo.Mapper.Mapper;
 import com.bookLoansystem.demo.Repositories.TeacherRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ public class GetTeacherByIdService {
     @Autowired
     private Mapper mapper;
 
+    @Transactional
     public ResponseEntity<TeacherDto> getTeacher(Long id){
 
         Teacher teacher = teacherRepository

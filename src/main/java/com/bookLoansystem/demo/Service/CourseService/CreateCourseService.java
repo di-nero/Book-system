@@ -7,6 +7,7 @@ import com.bookLoansystem.demo.Exception.ResourceNotFoundException;
 import com.bookLoansystem.demo.Mapper.Mapper;
 import com.bookLoansystem.demo.Repositories.CourseRepository;
 import com.bookLoansystem.demo.Repositories.TeacherRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ public class CreateCourseService {
     @Autowired
     private TeacherRepository teacherRepository;
 
+    @Transactional
     public ResponseEntity<CourseDto> createCourse(CourseDto courseDto) {
 
         if (courseRepository.existsByTitle(courseDto.getTitle())) {

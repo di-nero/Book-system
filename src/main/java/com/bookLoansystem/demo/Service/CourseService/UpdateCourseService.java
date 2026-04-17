@@ -8,6 +8,7 @@ import com.bookLoansystem.demo.Exception.ResourceNotFoundException;
 import com.bookLoansystem.demo.Mapper.Mapper;
 import com.bookLoansystem.demo.Repositories.CourseRepository;
 import com.bookLoansystem.demo.Repositories.TeacherRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,7 @@ public class UpdateCourseService {
     @Autowired
     public Mapper mapper;
 
+    @Transactional
     public ResponseEntity<CourseDto> updateCourse(Long Id , CourseDto newCourse){
 
         Course course = courseRepository
