@@ -4,6 +4,7 @@ import com.bookLoansystem.demo.Entity.Course;
 import com.bookLoansystem.demo.Entity.Student;
 import com.bookLoansystem.demo.Entity.Teacher;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class CourseDto {
     @NotBlank(message = "teacher's name is required")
     private String teacherName;
 
-    @NotBlank(message = "teacher's ID is required")
+    @NotNull(message = "Teacher ID is required")
     private Long teacherId;
 
 
