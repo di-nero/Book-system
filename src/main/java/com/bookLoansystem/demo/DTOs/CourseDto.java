@@ -18,7 +18,6 @@ public class CourseDto {
     @NotBlank(message = "description is required")
     private String description;
 
-    @NotBlank(message = "teacher's name is required")
     private String teacherName;
 
     @NotNull(message = "Teacher ID is required")
